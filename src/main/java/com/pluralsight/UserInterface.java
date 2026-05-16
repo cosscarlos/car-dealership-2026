@@ -7,11 +7,14 @@ import java.util.Scanner;
 public class UserInterface {
     private Dealership dealership;
 
-    public UserInterface(){
-
-
-
+    public UserInterface(Dealership dealership) {
+        this.dealership = dealership;
     }
+private void init(){
+        DealerShipFileManager fileManager = new DealerShipFileManager();
+        this.dealership = fileManager.getDealership();
+}
+
     void display() {
         Scanner theScanner = new Scanner(System.in);
         boolean running = true;
