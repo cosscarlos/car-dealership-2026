@@ -30,7 +30,9 @@ public class DealerShipFileManager {
 
 
                 Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
-                dealership.addVehicle(vehicle);
+                if (dealership != null){
+                    dealership.addVehicle(vehicle);
+                }
 
 
 
@@ -44,35 +46,35 @@ public class DealerShipFileManager {
     }
 
     public void saveDealership(Dealership dealership){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"))){
-            String theDealership = String.format("%s|%s|%s", dealership.getName(), dealership.getAddress(), dealership.getPhone());
-            writer.write(theDealership);
-            writer.newLine();
-
-            List<Vehicle> listAutos = dealership.getAllVehicles();
-
-            for (int i = 0; i < listAutos.size(); i++){
-                Vehicle vehicle = listAutos.get(i);
-
-                String vehicleLine = String.format("%d|%d|%s|%s|%s|%s|%d|%.2f",
-                        vehicle.getVin(),
-                        vehicle.getYear(),
-                        vehicle.getMake(),
-                        vehicle.getModel(),
-                        vehicle.getVehicleType(),
-                        vehicle.getColor(),
-                        vehicle.getOdometer(),
-                        vehicle.getPrice()
-                );
-                writer.write(vehicleLine);
-                writer.newLine();
-            }
-
-            System.out.println("Car saved successful!");
-
-        } catch (IOException e){
-            System.out.println("Error, car could not be saved.");
-        }
+//        try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"))){
+//            String theDealership = String.format("%s|%s|%s", dealership.getName(), dealership.getAddress(), dealership.getPhone());
+//            writer.write(theDealership);
+//            writer.newLine();
+//
+//            List<Vehicle> listAutos = dealership.getAllVehicles();
+//
+//            for (int i = 0; i < listAutos.size(); i++){
+//                Vehicle vehicle = listAutos.get(i);
+//
+//                String vehicleLine = String.format("%d|%d|%s|%s|%s|%s|%d|%.2f",
+//                        vehicle.getVin(),
+//                        vehicle.getYear(),
+//                        vehicle.getMake(),
+//                        vehicle.getModel(),
+//                        vehicle.getVehicleType(),
+//                        vehicle.getColor(),
+//                        vehicle.getOdometer(),
+//                        vehicle.getPrice()
+//                );
+//                writer.write(vehicleLine);
+//                writer.newLine();
+//            }
+//
+//            System.out.println("Car saved successful!");
+//
+//        } catch (IOException e){
+//            System.out.println("Error, car could not be saved.");
+//        }
 
 
     }
