@@ -64,17 +64,17 @@ public class Dealership {
 
 
     //other methods
-    public List<Vehicle> getAllVehicle(){
-        return inventory;
+    public List<Vehicle> getAllVehicles() {
+        return this.inventory;
     }
+
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
-        System.out.println("Vehicle added");
+        System.out.println("Vehicle added!");
     }
     public void removeVehicle(Vehicle vehicle){
 
     }
-
 
 
 
