@@ -105,7 +105,14 @@ private static void init(){
     }
 
     public static void processGetByYearRequest() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter minimum year: ");
+        int min = scanner.nextInt();
+        System.out.print("Enter maximum year: ");
+        int max = scanner.nextInt();
 
+        ArrayList<Vehicle> results = dealership.getVehiclesByYear(min, max);
+        displayVehicles(results);
     }
 
     public static void processGetByColorRequest() {
