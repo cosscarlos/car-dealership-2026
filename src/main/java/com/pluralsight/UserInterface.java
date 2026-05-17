@@ -116,7 +116,12 @@ private static void init(){
     }
 
     public static void processGetByColorRequest() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter color: ");
+        String color = scanner.nextLine();
 
+        ArrayList<Vehicle> results = dealership.getVehiclesByColor(color);
+        displayVehicles(results);
     }
 
     public static void processGetByMileageRequest() {
