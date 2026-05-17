@@ -18,15 +18,15 @@ public class DealerShipFileManager {
             }
 
             while ((line = reader.readLine()) != null){
-                String [] tokens = line.split("\\|");
-                int vin = Integer.parseInt(tokens[0]);
-                int year = Integer.parseInt(tokens[1]);
-                String make = tokens[2];
-                String model = tokens[3];
-                String type = tokens[4];
-                String color = tokens[5];
-                int odometer = Integer.parseInt(tokens[6]);
-                double price = Double.parseDouble(tokens[7]);
+                String [] parts = line.split("\\|");
+                int vin = Integer.parseInt(parts[0]);
+                int year = Integer.parseInt(parts[1]);
+                String make = parts[2];
+                String model = parts[3];
+                String type = parts[4];
+                String color = parts[5];
+                int odometer = Integer.parseInt(parts[6]);
+                double price = Double.parseDouble(parts[7]);
 
 
                 Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
@@ -37,6 +37,7 @@ public class DealerShipFileManager {
 
 
             }
+
 
 
         }catch(IOException e) {

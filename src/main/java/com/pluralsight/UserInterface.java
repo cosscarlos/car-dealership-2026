@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,20 +8,23 @@ import java.util.Scanner;
 public class UserInterface {
     private Dealership dealership;
 
-    public UserInterface(Dealership dealership) {
+    private UserInterface(Dealership dealership) {
         this.dealership = dealership;
     }
+
+
 private void init(){
         DealerShipFileManager fileManager = new DealerShipFileManager();
         this.dealership = fileManager.getDealership();
 }
 
     void display() {
+        init();
         Scanner theScanner = new Scanner(System.in);
         boolean running = true;
 
         while (running) {
-            // ▪ Display the menu (Imprimir las opciones en pantalla)
+
             System.out.println("====================================");
             System.out.println("        DEALERSHIP MENU             ");
             System.out.println("====================================");
@@ -106,11 +110,60 @@ private void init(){
     }
 
     public void processAddVehicleRequest() {
+        Scanner scanner = new Scanner (System.in);
+
+        System.out.println("Enter VIN: ");
+        int vin = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter make: ");
+        String make = scanner.nextLine();
+
+        System.out.println("Enter model: ");
+        String model = scanner.nextLine();
+
+        System.out.println("Enter type: ");
+        String type = scanner.nextLine();
+
+        System.out.println("Enter color: ");
+        String color = scanner.nextLine();
+
+        System.out.println("Enter mileage: ");
+        int mileage = scanner.nextInt();
+
+        System.out.println("Enter the price: ");
+        double price = scanner.nextDouble();
+
+        Vehicle vehicle = new Vehicle (vin, year, make, model, type, color, mileage, price);
+        dealership.addVehicle(vehicle);
+
+        DealerShipFileManager dfm = new DealerShipFileManager();
+        dfm.saveDealership(dealership);
+
+        System.out.println("Vehicle added successfully. ");
+
+
 
     }
 
     public void processRemoveVehicleRequest() {
 
+    }
+
+    //special methods
+
+    private static void displayVehicles(ArrayList<Vehicle> vehicleList){
+        if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+        } else {
+            for (Vehicle currentVehicle: vehicleList){
+                System.out.println(currentVehicle);
+            }
+        }
     }
 
 
