@@ -137,7 +137,12 @@ private static void init(){
     }
 
     public static void processGetByVehicleTypeRequest() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vehicle type: ");
+        String type = scanner.nextLine();
 
+        ArrayList<Vehicle> results = dealership.getVehiclesByType(type);
+        displayVehicles(results);
     }
 
     public static void processGetAllVehiclesRequest(){
