@@ -82,11 +82,26 @@ private static void init(){
     }
 
     public static void processGetByPriceRequest() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter minimum price: ");
+        double min = scanner.nextDouble();
+        System.out.print("Enter maximum price: ");
+        double max = scanner.nextDouble();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByPrice(min, max);
+        displayVehicles(results);
 
     }
 
     public static void processGetByMakeModelRequest() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter make: ");
+        String make = scanner.nextLine();
+        System.out.print("Enter model: ");
+        String model = scanner.nextLine();
 
+        ArrayList<Vehicle> results = dealership.getVehiclesByMakeModel(make, model);
+        displayVehicles(results);
     }
 
     public static void processGetByYearRequest() {
@@ -158,11 +173,17 @@ private static void init(){
     //special methods
 
     private static void displayVehicles(ArrayList<Vehicle> vehicleList){
+
         if (vehicleList.isEmpty()) {
             System.out.println("No vehicles found.");
         } else {
+
+            System.out.println("VIN | Year | Make | Model | Type | Color | Odometer | Price ");
             for (Vehicle currentVehicle: vehicleList){
-                System.out.println(currentVehicle);
+//                System.out.println(currentVehicle);
+                System.out.println( + currentVehicle.getVin() + " | " +currentVehicle.getYear() + " | " + currentVehicle.getMake() + " | " +
+                        currentVehicle.getModel() + " | " + currentVehicle.getVehicleType() + " | " + currentVehicle.getColor() + " | " +
+                        currentVehicle.getOdometer() + " | " + currentVehicle.getPrice());
             }
         }
     }
