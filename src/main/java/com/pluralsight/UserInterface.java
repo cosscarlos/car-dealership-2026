@@ -6,19 +6,19 @@ import java.util.Scanner;
 
 
 public class UserInterface {
-    private Dealership dealership;
+    private static Dealership dealership;
 
     private UserInterface(Dealership dealership) {
-        this.dealership = dealership;
+
     }
 
 
-private void init(){
+private static void init(){
         DealerShipFileManager fileManager = new DealerShipFileManager();
-        this.dealership = fileManager.getDealership();
+        dealership = fileManager.getDealership();
 }
 
-    void display() {
+    public static void display() {
         init();
         Scanner theScanner = new Scanner(System.in);
         boolean running = true;
@@ -81,35 +81,36 @@ private void init(){
         }
     }
 
-    public void processGetByPriceRequest() {
+    public static void processGetByPriceRequest() {
 
     }
 
-    public void processGetByMakeModelRequest() {
+    public static void processGetByMakeModelRequest() {
 
     }
 
-    public void processGetByYearRequest() {
+    public static void processGetByYearRequest() {
 
     }
 
-    public void processGetByColorRequest() {
+    public static void processGetByColorRequest() {
 
     }
 
-    public void processGetByMileageRequest() {
+    public static void processGetByMileageRequest() {
 
     }
 
-    public void processGetByVehicleTypeRequest() {
+    public static void processGetByVehicleTypeRequest() {
 
     }
 
-    public void processGetAllVehiclesRequest(){
-
+    public static void processGetAllVehiclesRequest(){
+        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
+        displayVehicles(vehicles);
     }
 
-    public void processAddVehicleRequest() {
+    public static void processAddVehicleRequest() {
         Scanner scanner = new Scanner (System.in);
 
         System.out.println("Enter VIN: ");
@@ -150,7 +151,7 @@ private void init(){
 
     }
 
-    public void processRemoveVehicleRequest() {
+    public static void processRemoveVehicleRequest() {
 
     }
 

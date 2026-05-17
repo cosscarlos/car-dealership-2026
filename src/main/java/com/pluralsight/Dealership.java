@@ -64,7 +64,7 @@ public class Dealership {
 
 
     //other methods
-    public List<Vehicle> getAllVehicles() {
+    public ArrayList<Vehicle> getAllVehicles() {
         return this.inventory;
     }
 
