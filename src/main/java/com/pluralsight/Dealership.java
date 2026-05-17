@@ -70,10 +70,15 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
-        System.out.println("Vehicle added!");
+
     }
     public void removeVehicle(Vehicle vehicle){
-
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getVin() == vehicle.getVin()) {
+                inventory.remove(i);
+                break;
+            }
+        }
     }
 
 
