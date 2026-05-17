@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 
@@ -206,7 +206,7 @@ private static void init(){
             System.out.println("VIN | Year | Make | Model | Type | Color | Odometer | Price ");
             for (Vehicle currentVehicle: vehicleList){
 //                System.out.println(currentVehicle);
-                System.out.println( + currentVehicle.getVin() + " | " +currentVehicle.getYear() + " | " + currentVehicle.getMake() + " | " +
+                System.out.println(currentVehicle.getVin() + " | " +currentVehicle.getYear() + " | " + currentVehicle.getMake() + " | " +
                         currentVehicle.getModel() + " | " + currentVehicle.getVehicleType() + " | " + currentVehicle.getColor() + " | " +
                         currentVehicle.getOdometer() + " | " + currentVehicle.getPrice());
             }
