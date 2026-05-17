@@ -125,6 +125,14 @@ private static void init(){
     }
 
     public static void processGetByMileageRequest() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter minimum mileage: ");
+        int min = scanner.nextInt();
+        System.out.print("Enter maximum mileage: ");
+        int max = scanner.nextInt();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByMileage(min, max);
+        displayVehicles(results);
 
     }
 
