@@ -43,8 +43,14 @@ public class Dealership {
 
 
     // specific getters and setters.
-    public List<Vehicle> getVehiclesByPrice(int min, int max){
-    return null;
+    public List<Vehicle> getVehiclesByPrice(double min, double max){
+        ArrayList<Vehicle> results = new ArrayList<Vehicle>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
+                results.add(vehicle);
+            }
+        }
+        return results;
     }
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
         return null;
