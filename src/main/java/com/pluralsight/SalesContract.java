@@ -2,19 +2,42 @@ package com.pluralsight;
 
 public class SalesContract extends Contract {
 
-    private double salesTaxAmount = 1.05;
-    private int recordingFee = 100;
-    private int processingFee;
-    private boolean finance;
-    private double monthlyPayment;
+    private double salesTaxAmount;
+    private double recordingFee = 100;
+    private double processingFee;
+    private boolean isFinanced;
 
 
-    public SalesContract(String date, String customerName, String customerEmail, boolean sold, double totalPrice, double monthlyPayment, double salesTaxAmount, int recordingFee, int processingFee, boolean finance, double monthlyPayment1) {
-        super(date, customerName, customerEmail, sold, totalPrice, monthlyPayment);
-        this.salesTaxAmount = salesTaxAmount;
-        this.recordingFee = recordingFee;
-        this.processingFee = processingFee;
-        this.finance = finance;
-        this.monthlyPayment = monthlyPayment1;
+    public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicle, boolean isFinanced) {
+        super(date, customerName, customerEmail, vehicle);
+        this.isFinanced = isFinanced;
+        this.salesTaxAmount = vehicle.getPrice() * 0.05;
+        this.processingFee = vehicle.getPrice() < 10000 ? 295 : 495;
+
+
     }
+
+
+    @Override
+    public double getTotalPrice() {
+        return vehicle.getPrice() + salesTaxAmount + recordingFee + processingFee;
+    }
+
+    @Override
+    public double getMonthlyPayment() {
+        if (!isFinanced) return 0;
+        double rate = vehicle.getPrice() >= 10000 ? 0.0425 : 0.0525;
+        int months = vehicle.getPrice() >= 10000 ? 48 : 24;
+        double interest = getTotalPrice() * rate * (months / 12.0);
+        return (getTotalPrice() + interest) / months;
+    }
+
+    public boolean isFinanced() { return isFinanced; }
+    public double getSalesTaxAmount() { return salesTaxAmount; }
+    public double getRecordingFee() { return recordingFee; }
+    public double getProcessingFee() { return processingFee; }
 }
+
+
+
+

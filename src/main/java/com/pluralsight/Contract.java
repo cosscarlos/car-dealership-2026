@@ -4,15 +4,14 @@ public abstract class Contract {
     protected String date;
     protected String customerName;
     protected String customerEmail;
-    protected Vehicle sold;
-    protected double totalPrice;
-    protected double monthlyPayment;
+    protected Vehicle vehicle;
 
-    public Contract(String date, String customerName, String customerEmail, Vehicle sold) {
+
+    public Contract(String date, String customerName, String customerEmail, Vehicle vehicle) {
         this.date = date;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
-        this.sold = sold;
+        this.vehicle = vehicle;
     }
 
     //default getters and setters
@@ -20,37 +19,26 @@ public abstract class Contract {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getCustomerName() {
         return customerName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
 
     public String getCustomerEmail() {
         return customerEmail;
     }
+    public Vehicle getVehicle() { return vehicle; }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
 
-    public Vehicle getSold() {
-        return sold;
-    }
 
-    public void setSold(Vehicle sold) {
-        this.sold = sold;
-    }
 
-//abstract methods
+
+    //abstract methods
     public abstract double getTotalPrice();
-    public abstract void getMonthlyPayment();
+
+    public abstract double getMonthlyPayment();
+
 
 
 }
